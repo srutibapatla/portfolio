@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Academic Projects — Sruti Bapatla</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #0d1b2a; --navy-mid: #1a2f45; --navy-light: #2a4a6b;
+    --orange: #e8612c; --orange-light: #f0845a; --orange-pale: #fdf0eb;
+    --gray: #6b7280; --gray-light: #f4f4f2; --gray-mid: #e2e2de;
+    --white: #ffffff; --text: #1a1a1a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text); }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--navy); display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 64px; }
+  .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--white); text-decoration: none; }
+  .nav-logo span { color: var(--orange); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--orange); }
+
+  .page-header { margin-top: 64px; background: var(--navy); padding: 3.5rem 3rem 3rem; }
+  .page-header-tag { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
+  .page-header h1 { font-family: 'DM Serif Display', serif; font-size: 2.75rem; color: var(--white); }
+  .page-header p { color: rgba(255,255,255,0.5); font-size: 0.95rem; margin-top: 0.5rem; }
+
+  .filter-bar { padding: 1.5rem 3rem; border-bottom: 1px solid var(--gray-mid); display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .filter-btn { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 6px 16px; border-radius: 2px; border: 1px solid var(--gray-mid); background: none; cursor: pointer; color: var(--gray); transition: all 0.2s; }
+  .filter-btn:hover { border-color: var(--orange); color: var(--orange); }
+  .filter-btn.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
+
+  .projects-section { padding: 3rem; }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+
+  .project-card {
+    cursor: pointer; border-radius: 4px; overflow: hidden;
+    border: 1px solid var(--gray-mid);
+    transition: all 0.25s;
+    animation: fadeUp 0.4s ease both;
+  }
+  .project-card:hover { box-shadow: 0 8px 30px rgba(13,27,42,0.12); transform: translateY(-4px); }
+
+  .project-thumb {
+    height: 180px; position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .project-thumb-icon { font-size: 3rem; opacity: 0.25; }
+  .project-thumb-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 0.5rem 1rem; background: linear-gradient(transparent, rgba(13,27,42,0.7)); }
+  .project-thumb-tag { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+
+  .project-body { padding: 1.25rem; background: var(--white); }
+  .project-title { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--navy); margin-bottom: 0.4rem; }
+  .project-desc { font-size: 0.85rem; color: var(--gray); line-height: 1.6; margin-bottom: 0.75rem; }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 5px; }
+  .project-tech span { font-size: 0.7rem; padding: 3px 8px; background: var(--gray-light); border: 1px solid var(--gray-mid); border-radius: 2px; color: var(--gray); }
+
+  /* color themes for thumbnails */
+  .thumb-navy { background: var(--navy-mid); }
+  .thumb-orange { background: #3d1a0a; }
+  .thumb-teal { background: #0a2a2a; }
+  .thumb-green { background: #0e2a10; }
+  .thumb-purple { background: #1a0a2a; }
+  .thumb-blue { background: #0a1a3a; }
+
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(13,27,42,0.75); align-items: center; justify-content: center; padding: 2rem; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--white); border-radius: 6px; max-width: 640px; width: 100%; max-height: 85vh; overflow-y: auto; position: relative; animation: fadeUp 0.25s ease; }
+  .modal-banner { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 4rem; opacity: 0.3; }
+  .modal-content { padding: 2rem 2.5rem 2.5rem; }
+  .modal-close { position: absolute; top: 1rem; right: 1rem; background: rgba(13,27,42,0.5); border: none; cursor: pointer; color: white; width: 32px; height: 32px; border-radius: 50%; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
+  .modal-close:hover { background: var(--orange); }
+  .modal-tag { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
+  .modal-title { font-family: 'DM Serif Display', serif; font-size: 1.75rem; color: var(--navy); margin-bottom: 1rem; }
+  .modal-divider { height: 1px; background: var(--gray-mid); margin: 1.25rem 0; }
+  .modal-section-title { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.75rem; }
+  .modal-body { font-size: 0.9rem; line-height: 1.8; color: var(--gray); }
+  .modal-bullets { list-style: none; padding: 0; }
+  .modal-bullets li { padding: 0.35rem 0 0.35rem 1.25rem; position: relative; font-size: 0.9rem; color: var(--gray); line-height: 1.6; }
+  .modal-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--orange); }
+  .modal-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
+  .modal-tech-tag { font-size: 0.75rem; padding: 4px 10px; background: var(--orange-pale); color: var(--orange); border-radius: 2px; font-weight: 500; }
+
+  footer { background: var(--navy); color: rgba(255,255,255,0.4); text-align: center; padding: 1.5rem; font-size: 0.78rem; letter-spacing: 0.05em; }
+  footer span { color: var(--orange); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Sruti <span>Bapatla</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">About</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="academic.html" class="active">Academic</a></li>
+    <li><a href="personal.html">Personal</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <p class="page-header-tag">Coursework & Research</p>
+  <h1>Academic Projects</h1>
+  <p>Click any project to learn more.</p>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterProjects('all', this)">All</button>
+  <button class="filter-btn" onclick="filterProjects('systems', this)">Systems</button>
+  <button class="filter-btn" onclick="filterProjects('ml', this)">Machine Learning</button>
+  <button class="filter-btn" onclick="filterProjects('web', this)">Web / Apps</button>
+  <button class="filter-btn" onclick="filterProjects('research', this)">Research</button>
+</div>
+
+<section class="projects-section">
+  <div class="projects-grid" id="grid">
+
+    <div class="project-card" data-cat="systems" onclick="openModal('proj1')" style="animation-delay:0.05s">
+      <div class="project-thumb thumb-navy">
+        <span class="project-thumb-icon">⚙️</span>
+        <div class="project-thumb-label"><span class="project-thumb-tag">Systems</span></div>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Project Title One</h3>
+        <p class="project-desc">Short one-liner description of what this project does and why it matters.</p>
+        <div class="project-tech"><span>C++</span><span>Linux</span><span>Threads</span></div>
+      </div>
+    </div>
+
+    <div class="project-card" data-cat="ml" onclick="openModal('proj2')" style="animation-delay:0.1s">
+      <div class="project-thumb thumb-purple">
+        <span class="project-thumb-icon">🧠</span>
+        <div class="project-thumb-label"><span class="project-thumb-tag">Machine Learning</span></div>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Project Title Two</h3>
+        <p class="project-desc">Short one-liner description of what this project does and why it matters.</p>
+        <div class="project-tech"><span>Python</span><span>PyTorch</span><span>NumPy</span></div>
+      </div>
+    </div>
+
+    <div class="project-card" data-cat="web" onclick="openModal('proj3')" style="animation-delay:0.15s">
+      <div class="project-thumb thumb-teal">
+        <span class="project-thumb-icon">🌐</span>
+        <div class="project-thumb-label"><span class="project-thumb-tag">Web / App</span></div>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Project Title Three</h3>
+        <p class="project-desc">Short one-liner description of what this project does and why it matters.</p>
+        <div class="project-tech"><span>React</span><span>Node.js</span><span>MongoDB</span></div>
+      </div>
+    </div>
+
+    <div class="project-card" data-cat="research" onclick="openModal('proj4')" style="animation-delay:0.2s">
+      <div class="project-thumb thumb-orange">
+        <span class="project-thumb-icon">🔬</span>
+        <div class="project-thumb-label"><span class="project-thumb-tag">Research</span></div>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Project Title Four</h3>
+        <p class="project-desc">Short one-liner description of what this project does and why it matters.</p>
+        <div class="project-tech"><span>Python</span><span>R</span><span>LaTeX</span></div>
+      </div>
+    </div>
+
+    <div class="project-card" data-cat="systems" onclick="openModal('proj5')" style="animation-delay:0.25s">
+      <div class="project-thumb thumb-green">
+        <span class="project-thumb-icon">🛠️</span>
+        <div class="project-thumb-label"><span class="project-thumb-tag">Systems</span></div>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Project Title Five</h3>
+        <p class="project-desc">Short one-liner description of what this project does and why it matters.</p>
+        <div class="project-tech"><span>C</span><span>Assembly</span><span>GDB</span></div>
+      </div>
+    </div>
+
+    <div class="project-card" data-cat="ml" onclick="openModal('proj6')" style="animation-delay:0.3s">
+      <div class="project-thumb thumb-blue">
+        <span class="project-thumb-icon">📊</span>
+        <div class="project-thumb-label"><span class="project-thumb-tag">Machine Learning</span></div>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Project Title Six</h3>
+        <p class="project-desc">Short one-liner description of what this project does and why it matters.</p>
+        <div class="project-tech"><span>Scikit-learn</span><span>Pandas</span><span>Jupyter</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MODALS (proj1–6) -->
+<div class="modal-overlay" id="modal-proj1" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-banner thumb-navy">⚙️</div>
+    <button class="modal-close" onclick="closeModalById('modal-proj1')">✕</button>
+    <div class="modal-content">
+      <p class="modal-tag">Systems · Course Name · Semester</p>
+      <h2 class="modal-title">Project Title One</h2>
+      <div class="modal-divider"></div>
+      <p class="modal-section-title">About</p>
+      <p class="modal-body">Describe the project in detail — the problem, your approach, and the outcome. What did you learn? What challenges did you overcome?</p>
+      <div class="modal-divider"></div>
+      <p class="modal-section-title">Highlights</p>
+      <ul class="modal-bullets">
+        <li>Highlight #1 — add specific details or metrics</li>
+        <li>Highlight #2</li>
+        <li>Highlight #3</li>
+      </ul>
+      <div class="modal-tags">
+        <span class="modal-tech-tag">C++</span><span class="modal-tech-tag">Linux</span><span class="modal-tech-tag">Threads</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-proj2" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-banner thumb-purple">🧠</div>
+    <button class="modal-close" onclick="closeModalById('modal-proj2')">✕</button>
+    <div class="modal-content">
+      <p class="modal-tag">Machine Learning · Course Name · Semester</p>
+      <h2 class="modal-title">Project Title Two</h2>
+      <div class="modal-divider"></div>
+      <p class="modal-section-title">About</p>
+      <p class="modal-body">Describe the project in detail here.</p>
+      <div class="modal-divider"></div>
+      <p class="modal-section-title">Highlights</p>
+      <ul class="modal-bullets">
+        <li>Highlight #1</li><li>Highlight #2</li><li>Highlight #3</li>
+      </ul>
+      <div class="modal-tags"><span class="modal-tech-tag">Python</span><span class="modal-tech-tag">PyTorch</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-proj3" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-banner thumb-teal">🌐</div>
+    <button class="modal-close" onclick="closeModalById('modal-proj3')">✕</button>
+    <div class="modal-content">
+      <p class="modal-tag">Web / App · Course Name · Semester</p>
+      <h2 class="modal-title">Project Title Three</h2>
+      <div class="modal-divider"></div>
+      <p class="modal-section-title">About</p>
+      <p class="modal-body">Describe the project in detail here.</p>
+      <div class="modal-divider"></div>
+      <p class="modal-section-title">Highlights</p>
+      <ul class="modal-bullets"><li>Highlight #1</li><li>Highlight #2</li><li>Highlight #3</li></ul>
+      <div class="modal-tags"><span class="modal-tech-tag">React</span><span class="modal-tech-tag">Node.js</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-proj4" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-banner thumb-orange">🔬</div>
+    <button class="modal-close" onclick="closeModalById('modal-proj4')">✕</button>
+    <div class="modal-content">
+      <p class="modal-tag">Research · Course Name · Semester</p>
+      <h2 class="modal-title">Project Title Four</h2>
+      <div class="modal-divider"></div>
+      <p class="modal-section-title">About</p>
+      <p class="modal-body">Describe the project in detail here.</p>
+      <div class="modal-divider"></div>
+      <p class="modal-section-title">Highlights</p>
+      <ul class="modal-bullets"><li>Highlight #1</li><li>Highlight #2</li><li>Highlight #3</li></ul>
+      <div class="modal-tags"><span class="modal-tech-tag">Python</span><span class="modal-tech-tag">R</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-proj5" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-banner thumb-green">🛠️</div>
+    <button class="modal-close" onclick="closeModalById('modal-proj5')">✕</button>
+    <div class="modal-content">
+      <p class="modal-tag">Systems · Course Name · Semester</p>
+      <h2 class="modal-title">Project Title Five</h2>
+      <div class="modal-divider"></div>
+      <p class="modal-section-title">About</p>
+      <p class="modal-body">Describe the project in detail here.</p>
+      <div class="modal-divider"></div>
+      <p class="modal-section-title">Highlights</p>
+      <ul class="modal-bullets"><li>Highlight #1</li><li>Highlight #2</li><li>Highlight #3</li></ul>
+      <div class="modal-tags"><span class="modal-tech-tag">C</span><span class="modal-tech-tag">Assembly</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-proj6" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-banner thumb-blue">📊</div>
+    <button class="modal-close" onclick="closeModalById('modal-proj6')">✕</button>
+    <div class="modal-content">
+      <p class="modal-tag">Machine Learning · Course Name · Semester</p>
+      <h2 class="modal-title">Project Title Six</h2>
+      <div class="modal-divider"></div>
+      <p class="modal-section-title">About</p>
+      <p class="modal-body">Describe the project in detail here.</p>
+      <div class="modal-divider"></div>
+      <p class="modal-section-title">Highlights</p>
+      <ul class="modal-bullets"><li>Highlight #1</li><li>Highlight #2</li><li>Highlight #3</li></ul>
+      <div class="modal-tags"><span class="modal-tech-tag">Scikit-learn</span><span class="modal-tech-tag">Pandas</span></div>
+    </div>
+  </div>
+</div>
+
+<footer>&copy; 2026 <span>Sruti Bapatla</span> &nbsp;·&nbsp; Built with purpose</footer>
+
+<script>
+function openModal(id) {
+  document.getElementById('modal-' + id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(e) {
+  if (e.target.classList.contains('modal-overlay')) {
+    e.target.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+function closeModalById(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+function filterProjects(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'block' : 'none';
+  });
+}
+</script>
+</body>
+</html>

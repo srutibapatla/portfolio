@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Personal — Sruti Bapatla</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #0d1b2a; --navy-mid: #1a2f45; --navy-light: #2a4a6b;
+    --orange: #e8612c; --orange-light: #f0845a; --orange-pale: #fdf0eb;
+    --gray: #6b7280; --gray-light: #f4f4f2; --gray-mid: #e2e2de;
+    --white: #ffffff; --text: #1a1a1a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text); }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--navy); display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 64px; }
+  .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--white); text-decoration: none; }
+  .nav-logo span { color: var(--orange); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--orange); }
+
+  .page-header { margin-top: 64px; background: var(--navy); padding: 3.5rem 3rem 3rem; }
+  .page-header-tag { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
+  .page-header h1 { font-family: 'DM Serif Display', serif; font-size: 2.75rem; color: var(--white); }
+  .page-header p { color: rgba(255,255,255,0.5); font-size: 0.95rem; margin-top: 0.5rem; }
+
+  .content { padding: 3rem; max-width: 960px; margin: 0 auto; }
+
+  /* FEATURED PROJECT — large card */
+  .featured-card {
+    border: 1px solid var(--gray-mid); border-radius: 4px; overflow: hidden;
+    margin-bottom: 3rem; cursor: pointer;
+    transition: box-shadow 0.25s, transform 0.25s;
+    animation: fadeUp 0.5s ease both;
+  }
+  .featured-card:hover { box-shadow: 0 8px 40px rgba(13,27,42,0.1); transform: translateY(-3px); }
+  .featured-banner {
+    height: 220px; background: var(--navy-mid); display: flex;
+    align-items: center; justify-content: center; font-size: 5rem; opacity: 0.25;
+    position: relative;
+  }
+  .featured-tag {
+    position: absolute; top: 1rem; left: 1rem;
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    background: var(--orange); color: var(--white); padding: 4px 12px; border-radius: 2px;
+  }
+  .featured-body { padding: 2rem; display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start; }
+  .featured-title { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--navy); margin-bottom: 0.5rem; }
+  .featured-desc { font-size: 0.9rem; color: var(--gray); line-height: 1.7; }
+  .featured-link { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--orange); text-decoration: none; white-space: nowrap; }
+  .featured-link::after { content: ' →'; }
+
+  /* SECTION TITLE */
+  .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.75rem; }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--navy); }
+  .section-line { flex: 1; height: 1px; background: var(--gray-mid); }
+
+  /* SMALLER CARDS GRID */
+  .mini-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; margin-bottom: 3rem; }
+  .mini-card {
+    border: 1px solid var(--gray-mid); border-radius: 4px; padding: 1.5rem;
+    transition: all 0.2s; border-left: 3px solid var(--orange);
+    cursor: pointer; animation: fadeUp 0.5s ease both;
+  }
+  .mini-card:hover { box-shadow: 0 4px 20px rgba(13,27,42,0.08); transform: translateY(-2px); }
+  .mini-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+  .mini-title { font-family: 'DM Serif Display', serif; font-size: 1.05rem; color: var(--navy); margin-bottom: 0.4rem; }
+  .mini-desc { font-size: 0.85rem; color: var(--gray); line-height: 1.6; }
+
+  /* INTERESTS / OTHER */
+  .interests-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+  .interest-tile {
+    background: var(--gray-light); border-radius: 4px; padding: 1.25rem;
+    text-align: center; border: 1px solid var(--gray-mid);
+    animation: fadeUp 0.5s ease both;
+  }
+  .interest-icon { font-size: 1.75rem; margin-bottom: 0.5rem; display: block; }
+  .interest-label { font-size: 0.82rem; font-weight: 600; color: var(--navy); }
+  .interest-sub { font-size: 0.75rem; color: var(--gray); margin-top: 2px; }
+
+  footer { background: var(--navy); color: rgba(255,255,255,0.4); text-align: center; padding: 1.5rem; font-size: 0.78rem; letter-spacing: 0.05em; margin-top: 3rem; }
+  footer span { color: var(--orange); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Sruti <span>Bapatla</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">About</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="academic.html">Academic</a></li>
+    <li><a href="personal.html" class="active">Personal</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <p class="page-header-tag">Beyond the Resume</p>
+  <h1>Personal Projects &amp; Other Things</h1>
+  <p>Things I build, explore, and care about outside of work and class.</p>
+</div>
+
+<div class="content">
+
+  <!-- FEATURED -->
+  <div class="featured-card" onclick="">
+    <div class="featured-banner">
+      🚀
+      <span class="featured-tag">Featured</span>
+    </div>
+    <div class="featured-body">
+      <div>
+        <h2 class="featured-title">Your Featured Personal Project</h2>
+        <p class="featured-desc">Describe your most exciting personal project here — what inspired it, what it does, and what you learned building it. This is a great place to show personality and passion beyond your formal work.</p>
+      </div>
+      <a class="featured-link" href="#">View project</a>
+    </div>
+  </div>
+
+  <!-- OTHER PROJECTS -->
+  <div class="section-header">
+    <h2 class="section-title">Side Projects</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="mini-grid">
+    <div class="mini-card">
+      <div class="mini-icon">🛠️</div>
+      <h3 class="mini-title">Side Project One</h3>
+      <p class="mini-desc">One or two sentences about what this project is and why you built it.</p>
+    </div>
+    <div class="mini-card" style="animation-delay:0.1s">
+      <div class="mini-icon">📱</div>
+      <h3 class="mini-title">Side Project Two</h3>
+      <p class="mini-desc">One or two sentences about what this project is and why you built it.</p>
+    </div>
+    <div class="mini-card" style="animation-delay:0.2s">
+      <div class="mini-icon">🎮</div>
+      <h3 class="mini-title">Side Project Three</h3>
+      <p class="mini-desc">One or two sentences about what this project is and why you built it.</p>
+    </div>
+  </div>
+
+  <!-- INTERESTS / OTHER THINGS -->
+  <div class="section-header">
+    <h2 class="section-title">Other Things I Love</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="interests-grid">
+    <div class="interest-tile">
+      <span class="interest-icon">📚</span>
+      <p class="interest-label">Reading</p>
+      <p class="interest-sub">Add your fav genre</p>
+    </div>
+    <div class="interest-tile" style="animation-delay:0.05s">
+      <span class="interest-icon">🎵</span>
+      <p class="interest-label">Music</p>
+      <p class="interest-sub">Add your taste</p>
+    </div>
+    <div class="interest-tile" style="animation-delay:0.1s">
+      <span class="interest-icon">✈️</span>
+      <p class="interest-label">Travel</p>
+      <p class="interest-sub">Add your dream destination</p>
+    </div>
+    <div class="interest-tile" style="animation-delay:0.15s">
+      <span class="interest-icon">🍳</span>
+      <p class="interest-label">Cooking</p>
+      <p class="interest-sub">Add your specialty</p>
+    </div>
+    <div class="interest-tile" style="animation-delay:0.2s">
+      <span class="interest-icon">🏃</span>
+      <p class="interest-label">Running</p>
+      <p class="interest-sub">Add your goal</p>
+    </div>
+    <div class="interest-tile" style="animation-delay:0.25s">
+      <span class="interest-icon">🎨</span>
+      <p class="interest-label">Creative</p>
+      <p class="interest-sub">Add your hobby</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>&copy; 2026 <span>Sruti Bapatla</span> &nbsp;·&nbsp; Built with purpose</footer>
+
+</body>
+</html>
