@@ -57,13 +57,10 @@
   .project-tech { display: flex; flex-wrap: wrap; gap: 5px; }
   .project-tech span { font-size: 0.7rem; padding: 3px 8px; background: var(--gray-light); border: 1px solid var(--gray-mid); border-radius: 2px; color: var(--gray); }
 
-  /* color themes for thumbnails */
   .thumb-navy { background: var(--navy-mid); }
   .thumb-orange { background: #3d1a0a; }
   .thumb-teal { background: #0a2a2a; }
-  .thumb-green { background: #0e2a10; }
   .thumb-purple { background: #1a0a2a; }
-  .thumb-blue { background: #0a1a3a; }
 
   /* MODAL */
   .modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(13,27,42,0.75); align-items: center; justify-content: center; padding: 2rem; }
@@ -102,7 +99,7 @@
 </nav>
 
 <div class="page-header">
-  <p class="page-header-tag">Coursework & Research</p>
+  <p class="page-header-tag">Coursework &amp; Research</p>
   <h1>Academic Projects</h1>
   <p>Click any project to learn more.</p>
 </div>
@@ -165,243 +162,14 @@
         <div class="project-tech"><span>Python</span><span>AI / Game Logic</span><span>Multiplayer</span></div>
       </div>
     </div>
+
   </div>
-</sect<!-- Trigger Image -->
-<img src="C:\Users\sruti\Downloads\spice dispenser thumbnail.JPG" alt="Pepper Icon" width="100" height="100" onclick="openScrollableModal()">
-
-<!-- Scrollable Modal -->
-<div id="scrollableModal" class="modal-overlay" style="display: none;" onclick="closeScrollableModal(event)">
-  <div class="modal scrollable-modal" onclick="event.stopPropagation()"> <!-- Prevent propagation -->
-    <button class="modal-close" onclick="closeScrollableModal()">✕</button>
-    <div class="modal-content">
-      <h2>Gallery</h2>
-      <div class="modal-images">
-        <img src="C:\Users\sruti\Downloads\spice dispenser thumbnail.JPG" alt="Image 1">
-        <img src="C:\Users\sruti\Downloads\another-image.jpg" alt="Image 2">
-        <img src="C:\Users\sruti\Downloads\third-image.jpg" alt="Image 3">
-        <!-- Add more images as needed -->
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- CSS -->
-<style>
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-
-  .scrollable-modal {
-    background: white;
-    width: 80%;
-    height: 80%;
-    overflow-y: scroll;
-    padding: 20px;
-    border-radius: 8px;
-  }
-
-  .modal-close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-  }
-
-  .modal-images img {
-    width: 100%;
-    margin-bottom: 20px;
-    border-radius: 8px;
-  }
-</style>
-
-<!-- JavaScript -->
-<script>
-  function openScrollableModal() {
-    document.getElementById('scrollableModal').style.display = 'flex';
-  }
-
-  function closeScrollableModal(event) {
-    if (event.target.id === 'scrollableModal') {
-      document.getElementById('scrollableModal').style.display = 'none';
-    }
-  }
-</script>ion>
+</section>
 
 <!-- MODALS -->
 <div class="modal-overlay" id="modal-proj1" onclick="closeModal(event)">
-  <div class="modal">  <!-- Trigger Image -->
-  <img src="C:\Users\sruti\Downloads\spice dispenser thumbnail.JPG" alt="Pepper Icon" width="100" height="100" onclick="openScrollableModal()">
-  
-  <!-- Scrollable Modal -->
-  <div id="scrollableModal" class="modal-overlay" style="display: none;">
-    <div class="modal scrollable-modal">
-      <button class="modal-close" oncli      </div>
-        </div>
-      </section>
-      
-      <!-- MODALS -->
-      <div class="modal-overlay" id="modal-proj1" onclick="closeModal(event)">
-        <div class="modal" onclick="event.stopPropagation()"> <!-- Prevent propagation -->
-          <!-- Trigger Image -->
-          <img src="C:\Users\sruti\Downloads\spice dispenser thumbnail.JPG" alt="Pepper Icon" width="100" height="100" onclick="openScrollableModal()">
-        </div>
-      </div>
-      
-      <!-- Scrollable Modal -->
-      <div id="scrollableModal" class="modal-overlay" style="display: none;" onclick="closeScrollableModal(event)">
-        <div class="modal scrollable-modal" onclick="event.stopPropagation()"> <!-- Prevent propagation -->
-          <button class="modal-close" onclick="closeScrollableModal()">✕</button>
-          <div class="modal-content">
-            <h2>Gallery</h2>
-            <div class="modal-images">
-              <img src="C:\Users\sruti\Downloads\spice dispenser thumbnail.JPG" alt="Image 1">
-              <img src="C:\Users\sruti\Downloads\another-image.jpg" alt="Image 2">
-              <img src="C:\Users\sruti\Downloads\third-image.jpg" alt="Image 3">
-              <!-- Add more images as needed -->
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- CSS -->
-      <style>
-        .modal-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.8);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          z-index: 1000;
-        }
-      
-        .scrollable-modal {
-          background: white;
-          width: 80%;
-          height: 80%;
-          overflow-y: scroll;
-          padding: 20px;
-          border-radius: 8px;
-        }
-      
-        .modal-close {
-          position: absolute;
-          top: 10px;
-          right: 20px;
-          background: none;
-          border: none;
-          font-size: 24px;
-          cursor: pointer;
-        }
-      
-        .modal-images img {
-          width: 100%;
-          margin-bottom: 20px;
-          border-radius: 8px;
-        }
-      </style>
-      
-      <!-- JavaScript -->
-      <script>
-        function openScrollableModal() {
-          document.getElementById('scrollableModal').style.display = 'flex';
-        }
-      
-        function closeScrollableModal(event) {
-          if (event.target.id === 'scrollableModal') {
-            document.getElementById('scrollableModal').style.display = 'none';
-          }
-        }
-      
-        function closeModal(event) {
-          if (event.target.id === 'modal-proj1') {
-            document.getElementById('modal-proj1').style.display = 'none';
-          }
-        }
-      </script>ck="closeScrollableModal()">✕</button>
-      <div class="modal-content">
-        <h2>Gallery</h2>
-        <div class="modal-images">
-          <img src="C:\Users\sruti\Downloads\spice dispenser thumbnail.JPG" alt="Image 1">
-          <img src="C:\Users\sruti\Downloads\another-image.jpg" alt="Image 2">
-          <img src="C:\Users\sruti\Downloads\third-image.jpg" alt="Image 3">
-          <!-- Add more images as needed -->
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- CSS -->
-  <style>
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-  
-    .scrollable-modal {
-      background: white;
-      width: 80%;
-      height: 80%;
-      overflow-y: scroll;
-      padding: 20px;
-      border-radius: 8px;
-    }
-  
-    .modal-close {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-    }
-  
-    .modal-images img {
-      width: 100%;
-      margin-bottom: 20px;
-      border-radius: 8px;
-    }
-  </style>
-  
-  <!-- JavaScript -->
-  <script>
-    function openScrollableModal() {
-      document.getElementById('scrollableModal').style.display = 'flex';
-    }
-  
-    function closeScrollableModal() {
-      document.getElementById('scrollableModal').style.display = 'none';
-    }
-  </script>  <div class="modal-banner thumb-navy">
-    <img src="path/to/pepper-image.png" alt="Pepper Icon" width="24" height="24">
-  </div>
-    <div class="modal-banner thumb-navy">
-      <img src=""C:\Users\sruti\Downloads\spice dispenser thumbnail.JPG"" alt="Pepper Icon" width="24" height="24">
-    </div>
+  <div class="modal">
+    <div class="modal-banner thumb-navy">🌶️</div>
     <button class="modal-close" onclick="closeModalById('modal-proj1')">✕</button>
     <div class="modal-content">
       <p class="modal-tag">Mechanical Design · Sep – Dec 2025</p>
@@ -417,7 +185,9 @@
         <li>Prototyped and iterated on form factor for practical everyday use</li>
       </ul>
       <div class="modal-tags">
-        <span class="modal-tech-tag">Mechanical Design</span><span class="modal-tech-tag">3D Printing</span><span class="modal-tech-tag">Prototyping</span>
+        <span class="modal-tech-tag">Mechanical Design</span>
+        <span class="modal-tech-tag">3D Printing</span>
+        <span class="modal-tech-tag">Prototyping</span>
       </div>
     </div>
   </div>
@@ -441,7 +211,10 @@
         <li>Collaborated with Medtronic stakeholders to align design with clinical needs</li>
       </ul>
       <div class="modal-tags">
-        <span class="modal-tech-tag">SolidWorks</span><span class="modal-tech-tag">Biocompatible Materials</span><span class="modal-tech-tag">Manufacturing</span><span class="modal-tech-tag">Medtronic</span>
+        <span class="modal-tech-tag">SolidWorks</span>
+        <span class="modal-tech-tag">Biocompatible Materials</span>
+        <span class="modal-tech-tag">Manufacturing</span>
+        <span class="modal-tech-tag">Medtronic</span>
       </div>
     </div>
   </div>
@@ -465,7 +238,10 @@
         <li>Used COMSOL's multiphysics coupling to combine structural and transport phenomena</li>
       </ul>
       <div class="modal-tags">
-        <span class="modal-tech-tag">COMSOL</span><span class="modal-tech-tag">FEA</span><span class="modal-tech-tag">Drug Delivery</span><span class="modal-tech-tag">Biomechanics</span>
+        <span class="modal-tech-tag">COMSOL</span>
+        <span class="modal-tech-tag">FEA</span>
+        <span class="modal-tech-tag">Drug Delivery</span>
+        <span class="modal-tech-tag">Biomechanics</span>
       </div>
     </div>
   </div>
@@ -489,7 +265,9 @@
         <li>Designed for multi-player online play with clean game state management</li>
       </ul>
       <div class="modal-tags">
-        <span class="modal-tech-tag">Python</span><span class="modal-tech-tag">Game AI</span><span class="modal-tech-tag">Algorithms</span>
+        <span class="modal-tech-tag">Python</span>
+        <span class="modal-tech-tag">Game AI</span>
+        <span class="modal-tech-tag">Algorithms</span>
       </div>
     </div>
   </div>
