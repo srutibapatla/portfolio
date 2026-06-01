@@ -109,110 +109,85 @@
 
 <div class="filter-bar">
   <button class="filter-btn active" onclick="filterProjects('all', this)">All</button>
-  <button class="filter-btn" onclick="filterProjects('systems', this)">Systems</button>
-  <button class="filter-btn" onclick="filterProjects('ml', this)">Machine Learning</button>
-  <button class="filter-btn" onclick="filterProjects('web', this)">Web / Apps</button>
-  <button class="filter-btn" onclick="filterProjects('research', this)">Research</button>
+  <button class="filter-btn" onclick="filterProjects('biomedical', this)">Biomedical</button>
+  <button class="filter-btn" onclick="filterProjects('mechanical', this)">Mechanical</button>
+  <button class="filter-btn" onclick="filterProjects('software', this)">Software</button>
+  <button class="filter-btn" onclick="filterProjects('simulation', this)">Simulation</button>
 </div>
 
 <section class="projects-section">
   <div class="projects-grid" id="grid">
 
-    <div class="project-card" data-cat="systems" onclick="openModal('proj1')" style="animation-delay:0.05s">
+    <div class="project-card" data-cat="mechanical" onclick="openModal('proj1')" style="animation-delay:0.05s">
       <div class="project-thumb thumb-navy">
-        <span class="project-thumb-icon">⚙️</span>
-        <div class="project-thumb-label"><span class="project-thumb-tag">Systems</span></div>
+        <span class="project-thumb-icon">🌶️</span>
+        <div class="project-thumb-label"><span class="project-thumb-tag">Mechanical Design</span></div>
       </div>
       <div class="project-body">
-        <h3 class="project-title">Project Title One</h3>
-        <p class="project-desc">Short one-liner description of what this project does and why it matters.</p>
-        <div class="project-tech"><span>C++</span><span>Linux</span><span>Threads</span></div>
+        <h3 class="project-title">Auto-Measuring Spice Dispenser</h3>
+        <p class="project-desc">Compact, refillable dispenser using mechanical components to dispense precise, preset increments of spice.</p>
+        <div class="project-tech"><span>Prototyping</span><span>Mechanical Systems</span><span>3D Printing</span></div>
       </div>
     </div>
 
-    <div class="project-card" data-cat="ml" onclick="openModal('proj2')" style="animation-delay:0.1s">
-      <div class="project-thumb thumb-purple">
-        <span class="project-thumb-icon">🧠</span>
-        <div class="project-thumb-label"><span class="project-thumb-tag">Machine Learning</span></div>
-      </div>
-      <div class="project-body">
-        <h3 class="project-title">Project Title Two</h3>
-        <p class="project-desc">Short one-liner description of what this project does and why it matters.</p>
-        <div class="project-tech"><span>Python</span><span>PyTorch</span><span>NumPy</span></div>
-      </div>
-    </div>
-
-    <div class="project-card" data-cat="web" onclick="openModal('proj3')" style="animation-delay:0.15s">
-      <div class="project-thumb thumb-teal">
-        <span class="project-thumb-icon">🌐</span>
-        <div class="project-thumb-label"><span class="project-thumb-tag">Web / App</span></div>
-      </div>
-      <div class="project-body">
-        <h3 class="project-title">Project Title Three</h3>
-        <p class="project-desc">Short one-liner description of what this project does and why it matters.</p>
-        <div class="project-tech"><span>React</span><span>Node.js</span><span>MongoDB</span></div>
-      </div>
-    </div>
-
-    <div class="project-card" data-cat="research" onclick="openModal('proj4')" style="animation-delay:0.2s">
+    <div class="project-card" data-cat="biomedical" onclick="openModal('proj2')" style="animation-delay:0.1s">
       <div class="project-thumb thumb-orange">
-        <span class="project-thumb-icon">🔬</span>
-        <div class="project-thumb-label"><span class="project-thumb-tag">Research</span></div>
+        <span class="project-thumb-icon">🩺</span>
+        <div class="project-thumb-label"><span class="project-thumb-tag">Biomedical · Medtronic</span></div>
       </div>
       <div class="project-body">
-        <h3 class="project-title">Project Title Four</h3>
-        <p class="project-desc">Short one-liner description of what this project does and why it matters.</p>
-        <div class="project-tech"><span>Python</span><span>R</span><span>LaTeX</span></div>
+        <h3 class="project-title">Spinal Torque Device</h3>
+        <p class="project-desc">Biocompatible adapter for measuring applied torque on spinal surgical instruments, sponsored by Medtronic.</p>
+        <div class="project-tech"><span>SolidWorks</span><span>Biocompatible Materials</span><span>Surgical Instruments</span></div>
       </div>
     </div>
 
-    <div class="project-card" data-cat="systems" onclick="openModal('proj5')" style="animation-delay:0.25s">
-      <div class="project-thumb thumb-green">
-        <span class="project-thumb-icon">🛠️</span>
-        <div class="project-thumb-label"><span class="project-thumb-tag">Systems</span></div>
+    <div class="project-card" data-cat="simulation" onclick="openModal('proj3')" style="animation-delay:0.15s">
+      <div class="project-thumb thumb-teal">
+        <span class="project-thumb-icon">💊</span>
+        <div class="project-thumb-label"><span class="project-thumb-tag">Simulation</span></div>
       </div>
       <div class="project-body">
-        <h3 class="project-title">Project Title Five</h3>
-        <p class="project-desc">Short one-liner description of what this project does and why it matters.</p>
-        <div class="project-tech"><span>C</span><span>Assembly</span><span>GDB</span></div>
+        <h3 class="project-title">Drug Eluting Stent Simulation</h3>
+        <p class="project-desc">COMSOL simulation analyzing stresses on a drug eluting stent and modeling drug release kinetics.</p>
+        <div class="project-tech"><span>COMSOL</span><span>FEA</span><span>Biomechanics</span></div>
       </div>
     </div>
 
-    <div class="project-card" data-cat="ml" onclick="openModal('proj6')" style="animation-delay:0.3s">
-      <div class="project-thumb thumb-blue">
-        <span class="project-thumb-icon">📊</span>
-        <div class="project-thumb-label"><span class="project-thumb-tag">Machine Learning</span></div>
+    <div class="project-card" data-cat="software" onclick="openModal('proj4')" style="animation-delay:0.2s">
+      <div class="project-thumb thumb-purple">
+        <span class="project-thumb-icon">🎲</span>
+        <div class="project-thumb-label"><span class="project-thumb-tag">Software</span></div>
       </div>
       <div class="project-body">
-        <h3 class="project-title">Project Title Six</h3>
-        <p class="project-desc">Short one-liner description of what this project does and why it matters.</p>
-        <div class="project-tech"><span>Scikit-learn</span><span>Pandas</span><span>Jupyter</span></div>
+        <h3 class="project-title">Scrabble Python Game</h3>
+        <p class="project-desc">Multi-player, multi-level online Scrabble game with computer AI opponent, built in Python.</p>
+        <div class="project-tech"><span>Python</span><span>AI / Game Logic</span><span>Multiplayer</span></div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- MODALS (proj1–6) -->
+<!-- MODALS -->
 <div class="modal-overlay" id="modal-proj1" onclick="closeModal(event)">
   <div class="modal">
-    <div class="modal-banner thumb-navy">⚙️</div>
+    <div class="modal-banner thumb-navy">🌶️</div>
     <button class="modal-close" onclick="closeModalById('modal-proj1')">✕</button>
     <div class="modal-content">
-      <p class="modal-tag">Systems · Course Name · Semester</p>
-      <h2 class="modal-title">Project Title One</h2>
+      <p class="modal-tag">Mechanical Design · Sep – Dec 2025</p>
+      <h2 class="modal-title">Auto-Measuring Spice Dispenser</h2>
       <div class="modal-divider"></div>
       <p class="modal-section-title">About</p>
-      <p class="modal-body">Describe the project in detail — the problem, your approach, and the outcome. What did you learn? What challenges did you overcome?</p>
+      <p class="modal-body">Designed and prototyped a compact, refillable spice dispenser that uses mechanical components to dispense preset, precise increments — solving a real problem for people who cook with specific recipes or dietary constraints. The project focused on clean mechanical design and reliable actuation in a small form factor.</p>
       <div class="modal-divider"></div>
       <p class="modal-section-title">Highlights</p>
       <ul class="modal-bullets">
-        <li>Highlight #1 — add specific details or metrics</li>
-        <li>Highlight #2</li>
-        <li>Highlight #3</li>
+        <li>Designed a compact refillable mechanism for precise, repeatable spice dispensing</li>
+        <li>Used mechanical components to achieve preset increment control without electronics</li>
+        <li>Prototyped and iterated on form factor for practical everyday use</li>
       </ul>
       <div class="modal-tags">
-        <span class="modal-tech-tag">C++</span><span class="modal-tech-tag">Linux</span><span class="modal-tech-tag">Threads</span>
+        <span class="modal-tech-tag">Mechanical Design</span><span class="modal-tech-tag">3D Printing</span><span class="modal-tech-tag">Prototyping</span>
       </div>
     </div>
   </div>
@@ -220,92 +195,72 @@
 
 <div class="modal-overlay" id="modal-proj2" onclick="closeModal(event)">
   <div class="modal">
-    <div class="modal-banner thumb-purple">🧠</div>
+    <div class="modal-banner thumb-orange">🩺</div>
     <button class="modal-close" onclick="closeModalById('modal-proj2')">✕</button>
     <div class="modal-content">
-      <p class="modal-tag">Machine Learning · Course Name · Semester</p>
-      <h2 class="modal-title">Project Title Two</h2>
+      <p class="modal-tag">Biomedical Engineering Capstone · Sponsored by Medtronic · Sep 2022 – May 2023</p>
+      <h2 class="modal-title">Spinal Torque Device</h2>
       <div class="modal-divider"></div>
       <p class="modal-section-title">About</p>
-      <p class="modal-body">Describe the project in detail here.</p>
+      <p class="modal-body">For my Biomedical Engineering capstone, sponsored by Medtronic, I designed and manufactured a biocompatible adapter for measuring the torque applied to spinal surgical instruments during procedures. Accurate torque measurement is critical for patient safety, and this device filled a gap in intraoperative feedback tools.</p>
       <div class="modal-divider"></div>
       <p class="modal-section-title">Highlights</p>
       <ul class="modal-bullets">
-        <li>Highlight #1</li><li>Highlight #2</li><li>Highlight #3</li>
+        <li>Designed a biocompatible adapter compatible with existing spinal surgical instruments</li>
+        <li>Manufactured the device to meet sterility and materials requirements for surgical use</li>
+        <li>Collaborated with Medtronic stakeholders to align design with clinical needs</li>
       </ul>
-      <div class="modal-tags"><span class="modal-tech-tag">Python</span><span class="modal-tech-tag">PyTorch</span></div>
+      <div class="modal-tags">
+        <span class="modal-tech-tag">SolidWorks</span><span class="modal-tech-tag">Biocompatible Materials</span><span class="modal-tech-tag">Manufacturing</span><span class="modal-tech-tag">Medtronic</span>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="modal-overlay" id="modal-proj3" onclick="closeModal(event)">
   <div class="modal">
-    <div class="modal-banner thumb-teal">🌐</div>
+    <div class="modal-banner thumb-teal">💊</div>
     <button class="modal-close" onclick="closeModalById('modal-proj3')">✕</button>
     <div class="modal-content">
-      <p class="modal-tag">Web / App · Course Name · Semester</p>
-      <h2 class="modal-title">Project Title Three</h2>
+      <p class="modal-tag">Simulation · Jan – May 2023</p>
+      <h2 class="modal-title">Drug Eluting Stent Simulation</h2>
       <div class="modal-divider"></div>
       <p class="modal-section-title">About</p>
-      <p class="modal-body">Describe the project in detail here.</p>
+      <p class="modal-body">Using COMSOL Multiphysics, I simulated a drug eluting stent to analyze the mechanical stresses on the stent structure and model the kinetics of drug release into surrounding tissue. This type of simulation is essential for optimizing stent geometry and drug coating for cardiovascular applications.</p>
       <div class="modal-divider"></div>
       <p class="modal-section-title">Highlights</p>
-      <ul class="modal-bullets"><li>Highlight #1</li><li>Highlight #2</li><li>Highlight #3</li></ul>
-      <div class="modal-tags"><span class="modal-tech-tag">React</span><span class="modal-tech-tag">Node.js</span></div>
+      <ul class="modal-bullets">
+        <li>Modeled structural stresses on the stent under physiological loading conditions</li>
+        <li>Simulated drug release kinetics to analyze delivery rate and tissue penetration</li>
+        <li>Used COMSOL's multiphysics coupling to combine structural and transport phenomena</li>
+      </ul>
+      <div class="modal-tags">
+        <span class="modal-tech-tag">COMSOL</span><span class="modal-tech-tag">FEA</span><span class="modal-tech-tag">Drug Delivery</span><span class="modal-tech-tag">Biomechanics</span>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="modal-overlay" id="modal-proj4" onclick="closeModal(event)">
   <div class="modal">
-    <div class="modal-banner thumb-orange">🔬</div>
+    <div class="modal-banner thumb-purple">🎲</div>
     <button class="modal-close" onclick="closeModalById('modal-proj4')">✕</button>
     <div class="modal-content">
-      <p class="modal-tag">Research · Course Name · Semester</p>
-      <h2 class="modal-title">Project Title Four</h2>
+      <p class="modal-tag">Software · Jan – May 2022</p>
+      <h2 class="modal-title">Scrabble Python Game</h2>
       <div class="modal-divider"></div>
       <p class="modal-section-title">About</p>
-      <p class="modal-body">Describe the project in detail here.</p>
+      <p class="modal-body">Built a fully functional multi-player, multi-level Scrabble game in Python, complete with a computer AI opponent. The project involved implementing game logic, board state management, a valid word dictionary, and an AI strategy for tile placement — a rigorous introduction to software design and algorithmic thinking.</p>
       <div class="modal-divider"></div>
       <p class="modal-section-title">Highlights</p>
-      <ul class="modal-bullets"><li>Highlight #1</li><li>Highlight #2</li><li>Highlight #3</li></ul>
-      <div class="modal-tags"><span class="modal-tech-tag">Python</span><span class="modal-tech-tag">R</span></div>
-    </div>
-  </div>
-</div>
-
-<div class="modal-overlay" id="modal-proj5" onclick="closeModal(event)">
-  <div class="modal">
-    <div class="modal-banner thumb-green">🛠️</div>
-    <button class="modal-close" onclick="closeModalById('modal-proj5')">✕</button>
-    <div class="modal-content">
-      <p class="modal-tag">Systems · Course Name · Semester</p>
-      <h2 class="modal-title">Project Title Five</h2>
-      <div class="modal-divider"></div>
-      <p class="modal-section-title">About</p>
-      <p class="modal-body">Describe the project in detail here.</p>
-      <div class="modal-divider"></div>
-      <p class="modal-section-title">Highlights</p>
-      <ul class="modal-bullets"><li>Highlight #1</li><li>Highlight #2</li><li>Highlight #3</li></ul>
-      <div class="modal-tags"><span class="modal-tech-tag">C</span><span class="modal-tech-tag">Assembly</span></div>
-    </div>
-  </div>
-</div>
-
-<div class="modal-overlay" id="modal-proj6" onclick="closeModal(event)">
-  <div class="modal">
-    <div class="modal-banner thumb-blue">📊</div>
-    <button class="modal-close" onclick="closeModalById('modal-proj6')">✕</button>
-    <div class="modal-content">
-      <p class="modal-tag">Machine Learning · Course Name · Semester</p>
-      <h2 class="modal-title">Project Title Six</h2>
-      <div class="modal-divider"></div>
-      <p class="modal-section-title">About</p>
-      <p class="modal-body">Describe the project in detail here.</p>
-      <div class="modal-divider"></div>
-      <p class="modal-section-title">Highlights</p>
-      <ul class="modal-bullets"><li>Highlight #1</li><li>Highlight #2</li><li>Highlight #3</li></ul>
-      <div class="modal-tags"><span class="modal-tech-tag">Scikit-learn</span><span class="modal-tech-tag">Pandas</span></div>
+      <ul class="modal-bullets">
+        <li>Implemented full Scrabble rules including scoring, special tiles, and valid word checking</li>
+        <li>Built a computer AI opponent with multi-level difficulty</li>
+        <li>Designed for multi-player online play with clean game state management</li>
+      </ul>
+      <div class="modal-tags">
+        <span class="modal-tech-tag">Python</span><span class="modal-tech-tag">Game AI</span><span class="modal-tech-tag">Algorithms</span>
+      </div>
     </div>
   </div>
 </div>
